@@ -44,6 +44,19 @@ void IRAM_ATTR delayMicroseconds(uint32_t us)  /*< 'us' is the time in microseco
     }
 }
 
+// let's say esp_timer_get_time loop between 0 to 100 
+// let's say that at call of delayMicronseconds, esp_timer_get_time return 90
+// and let's say that 'us' is called with 30 value 
+// so e = 90+30 = 120 = 20 (overflow >100) 
+// m is still 90 it has to go up to 100 to achieve 10 loops before overflow 
+// this is why there is a while(micro()> e ) { nop; }  -- 90 > 20 so it will work until micro reach 100
+// Once 100 is reached micro() start again at 0 
+// then this is the second while(micro() < e) {nop } -- 0 < 20 so it will work until micro reach e ie 20
+//
+// if at first m is > e, there isn't any overflow and therfore it jumps directly to the second while as normal. 
+// using a pen and paper to draw it is helping the understanding. 
+
+
 static esp_err_t i2c_master_driver_initialize(void)  /*< initialisation of i2c as a master on esp32 */
 {
     i2c_config_t conf = {

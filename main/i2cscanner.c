@@ -72,7 +72,7 @@ static esp_err_t i2c_master_driver_initialize(void)  /*< initialisation of i2c a
 
 
 
-static int do_i2cdetect_cmd(void) i /*< main function which loops over i2c address space to initialise a session, send a byte and look for answer*/ 
+static int do_i2cdetect_cmd(void)  /*< main function which loops over i2c address space to initialise a session, send a byte and look for answer*/ 
 {
     i2c_driver_install(i2c_port, I2C_MODE_MASTER, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0); 
     i2c_master_driver_initialize();

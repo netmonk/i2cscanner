@@ -53,7 +53,7 @@ void IRAM_ATTR delayMicroseconds(uint32_t us)  /*< 'us' is the time in microseco
 // Once 100 is reached micro() start again at 0 
 // then this is the second while(micro() < e) {nop } -- 0 < 20 so it will work until micro reach e ie 20
 //
-// if at first m is > e, there isn't any overflow and therfore it jumps directly to the second while as normal. 
+// if at first m < e, there isn't any overflow and therfore it jumps directly to the second while as normal. 
 // using a pen and paper to draw it is helping the understanding. 
 
 

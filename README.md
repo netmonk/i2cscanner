@@ -2,6 +2,8 @@
 
 A simple I2C scanner using esp-idf Espressif framework for ESP32.
 
+Mostly inspired by https://github.com/espressif/esp-idf/tree/master/examples/peripherals/i2c/i2c_tools
+to focus only on peripherals detection. 
 
 The code work for ESP32-WROOM-devkit1 with pins 21/22 as i2c port.
 
